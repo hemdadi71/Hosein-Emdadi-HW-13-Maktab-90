@@ -1,7 +1,8 @@
 import El from '@/Library'
-import { Validation } from '../Validation'
+import { svg } from '@/Svg'
+import { handleShowPassword } from './Function'
 
-const Input = ({ placeholder, className, type, name }) => {
+const Input = ({ placeholder, eyeClassName, type, name, onkeyup }) => {
   return El({
     element: 'div',
     className: 'relative',
@@ -14,6 +15,14 @@ const Input = ({ placeholder, className, type, name }) => {
         type: type,
         placeholder: ' ',
         name: name,
+        onkeyup,
+      }),
+      El({
+        element: 'div',
+        id: 'svg',
+        className: `${eyeClassName} absolute right-3 top-7`,
+        innerHTML: svg.eye,
+        onmousedown: handleShowPassword,
       }),
       El({
         element: 'label',

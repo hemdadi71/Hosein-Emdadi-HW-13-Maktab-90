@@ -1,3 +1,8 @@
+import {
+  handleValidationEmail,
+  handleValidationPassword,
+  handleValidationRepassword,
+} from '@/Components'
 import Input from '@/Components/Shared/Input'
 import El from '@/Library'
 import { handleSetData } from './Function'
@@ -10,6 +15,7 @@ export const SignUP = () => {
       El({
         element: 'form',
         id: 'signupForm',
+        restAttrs: { 'data-validation': 0 },
         onsubmit: handleSetData,
         className: 'flex flex-col gap-5 mt-8',
         child: [
@@ -22,6 +28,8 @@ export const SignUP = () => {
                 type: 'text',
                 placeholder: 'Email',
                 name: 'email',
+                onkeyup: handleValidationEmail,
+                eyeClassName: 'hidden',
               }),
             ],
           }),
@@ -33,7 +41,8 @@ export const SignUP = () => {
               Input({
                 type: 'password',
                 placeholder: 'Password',
-                name: 'password',
+                name: 'password', 
+                onkeyup: handleValidationPassword,
               }),
             ],
           }),
@@ -45,6 +54,7 @@ export const SignUP = () => {
               Input({
                 type: 'password',
                 placeholder: 'Reenter password',
+                onkeyup: handleValidationRepassword,
               }),
             ],
           }),

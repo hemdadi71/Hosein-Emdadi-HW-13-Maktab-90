@@ -1,6 +1,6 @@
-import { Validation } from '@/Components'
 import Input from '@/Components/Shared/Input'
 import El from '@/Library'
+import { handleSignIn } from './Function'
 
 export const SignIn = () => {
   return El({
@@ -10,6 +10,7 @@ export const SignIn = () => {
       El({
         element: 'form',
         id: 'loginForm',
+        onsubmit: handleSignIn,
         className: 'flex flex-col gap-10 mt-8',
         child: [
           El({
@@ -20,11 +21,9 @@ export const SignIn = () => {
               Input({
                 type: 'text',
                 placeholder: 'Email',
+                name: 'email',
+                eyeClassName: 'hidden',
               }),
-              // Validation({
-              //   text: 'Invalid',
-              //   className:'text-green-500 font-bold text-left pl-2'
-              // }),
             ],
           }),
           El({
@@ -35,6 +34,7 @@ export const SignIn = () => {
               Input({
                 type: 'password',
                 placeholder: 'Password',
+                name: 'password',
               }),
             ],
           }),
