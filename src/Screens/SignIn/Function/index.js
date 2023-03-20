@@ -1,20 +1,131 @@
 import { API } from '@/API/Function'
+import { ValidationText } from '@/Components'
 
 export const handleSignIn = e => {
   e.preventDefault()
-  console.log(e.target.email.value)
+  const signinPassword = document.getElementById('signinPassword')
+  const signinUserName = document.getElementById('signinUserName')
   API.GetData(API.BaseUrl, API.Endpoint).then(response => {
-    console.log(response)
-    const result = response.find(
-      item =>
-        item.email === e.target.email.value &&
-        item.password === e.target.password.value
-    )
-    console.log(result)
-    if (result) {
-      alert('access')
-    } else {
-      alert('Please Create account')
-    }
+    response.find(item => {
+      if (e.target.email.value) {
+        if (item.email !== e.target.email.value) {
+          if (signinUserName.childNodes[1]) return
+          signinUserName.append(
+            ValidationText({
+              text: 'email is invalid',
+              className: 'text-red-500 text-left ml-3',
+            })
+          )
+        } else {
+          if (signinUserName.childNodes[1]) {
+            signinUserName.childNodes[1].remove()
+          }
+        }
+      } else {
+        if (signinUserName.childNodes[1]) {
+          signinUserName.childNodes[1].remove()
+        }
+      }
+      // ..............................................................................
+      if (e.target.password.value) {
+        if (item.password !== e.target.password.value) {
+          if (signinPassword.childNodes[1]) return
+          signinPassword.append(
+            ValidationText({
+              text: 'password is invalid',
+              className: 'text-red-500 text-left ml-3',
+            })
+          )
+        } else {
+          if (signinPassword.childNodes[1]) {
+            signinPassword.childNodes[1].remove()
+          }
+        }
+      } else {
+        if (signinPassword.childNodes[1]) {
+          signinPassword.childNodes[1].remove()
+        }
+      }
+      // ............................................................
+      if (!e.target.password.value && !e.target.email.value) {
+        if (signinPassword.childNodes[1]) {
+          signinPassword.childNodes[1].remove()
+        }
+        if (signinUserName.childNodes[1]) {
+          signinUserName.childNodes[1].remove()
+        }
+      }
+      // ....................................................................................
+      if (e.target.password.value && e.target.email.value) {
+        if (
+          item.password !== e.target.password.value &&
+          item.email !== e.target.email.value
+        ) {
+          if (signinPassword.childNodes[1]) return
+          if (signinUserName.childNodes[1]) return
+          signinPassword.append(
+            ValidationText({
+              text: 'password is invalid',
+              className: 'text-red-500 text-left ml-3',
+            })
+          )
+          signinUserName.append(
+            ValidationText({
+              text: 'email is invalid',
+              className: 'text-red-500 text-left ml-3',
+            })
+          )
+        } else {
+          if (signinPassword.childNodes[1]) {
+            signinPassword.childNodes[1].remove()
+          }
+          if (signinUserName.childNodes[1]) {
+            signinUserName.childNodes[1].remove()
+          }
+          alert('success')
+          const main = document.getElementById('main')
+          main.innerHTML = ''
+        }
+      } else {
+        if (signinPassword.childNodes[1]) {
+          signinPassword.childNodes[1].remove()
+        }
+        if (signinUserName.childNodes[1]) {
+          signinUserName.childNodes[1].remove()
+        }
+      }
+      // .....................................................
+      if (e.target.password.value && !e.target.email.value) {
+        if (item.password !== e.target.password.value) {
+          if (signinPassword.childNodes[1]) return
+          signinPassword.append(
+            ValidationText({
+              text: 'password is invalid',
+              className: 'text-red-500 text-left ml-3',
+            })
+          )
+        } else {
+          if (signinPassword.childNodes[1]) {
+            signinPassword.childNodes[1].remove()
+          }
+        }
+      }
+      // ...........................................................
+      if (!e.target.password.value && e.target.email.value) {
+        if (item.email !== e.target.email.value) {
+          if (signinUserName.childNodes[1]) return
+          signinUserName.append(
+            ValidationText({
+              text: 'email is invalid',
+              className: 'text-red-500 text-left ml-3',
+            })
+          )
+        } else {
+          if (signinUserName.childNodes[1]) {
+            signinUserName.childNodes[1].remove()
+          }
+        }
+      }
+    })
   })
 }
