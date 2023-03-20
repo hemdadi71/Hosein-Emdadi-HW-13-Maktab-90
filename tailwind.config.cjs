@@ -3,8 +3,9 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      
+      colors: {
+        trBlack: '#000000d0',
+      },
     },
   },
-  plugins: [require('flowbite/plugin')],
 }

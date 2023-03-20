@@ -8,5 +8,8 @@
 }
 body {
   font-family: 'Open Sans', sans-serif;
+  background: #222;
+  background-image: url('https://source.unsplash.com/1920x1080/?landscape');
+  background-repeat: no-repeat;
 }
 

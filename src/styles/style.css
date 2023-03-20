@@ -36,3 +36,6 @@
 #nav ul li.active {
   color: black;
 }
+#search {
+  transition: 0.2s ease-in-out;
+}
