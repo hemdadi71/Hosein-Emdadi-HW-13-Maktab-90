@@ -60,7 +60,7 @@ export function handleBack() {
 export function InputFocusIn() {
   const inputUL = document.getElementById('inputUL')
   const history = document.getElementById('history')
-  const data = JSON.parse(localStorage.getItem('item'))
+  let data = JSON.parse(localStorage.getItem('item'))
   if (data) {
     history.classList.remove('hidden')
     inputUL.innerHTML = ''
@@ -76,6 +76,7 @@ export function InputFocusOut() {
     const history = document.getElementById('history')
     if (e.target === removeHistory) {
       localStorage.removeItem('item')
+      data = []
       history.classList.add('hidden')
     } else if (e.target === searchInput) {
       InputFocusIn()
