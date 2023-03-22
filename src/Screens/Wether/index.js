@@ -9,4 +9,4 @@ export const WetherPage = () => {
     child: [Card()],
   })
 }
-// weather.getApi('Denver').then(respons => console.log(respons))
+

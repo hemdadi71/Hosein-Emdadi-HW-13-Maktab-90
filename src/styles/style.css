@@ -39,3 +39,11 @@
 #search {
   transition: 0.2s ease-in-out;
 }
+#inputUL li:first-child {
+  border-radius: 15px 15px 0 0;
+  padding-top: 10px;
+}
+#removeHistory {
+  border-radius: 0 0 15px 15px;
+  padding-bottom: 10px;
+}

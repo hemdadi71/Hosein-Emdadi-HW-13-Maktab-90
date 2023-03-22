@@ -1,5 +1,9 @@
 import { Routes } from '@/Routes'
-import { displayWeather, getApi } from '@/Screens/Wether/Function'
+import {
+  displayWeather,
+  getApi,
+  InputFocusOut,
+} from '@/Screens/Wether/Function'
 
 const windowLoad = () => {
   const handleGoShop = () => {

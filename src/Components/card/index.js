@@ -2,10 +2,12 @@ import El from '@/Library'
 import { handleBack, handleSearch } from '@/Screens/Wether/Function'
 import { svg } from '@/Svg'
 import { debounce } from 'lodash'
+// import { Li } from './Li-Input'
 
 export const Card = () => {
   return El({
     element: 'div',
+    id: 'card',
     className:
       'card bg-trBlack text-white p-7 rounded-2xl w-full max-w-[420px] m-2 text-[120%] flex flex-col gap-5',
     child: [
@@ -14,14 +16,41 @@ export const Card = () => {
         className: 'search flex items-center justify-center',
         child: [
           El({
-            element: 'input',
-            onkeyup: debounce(e => handleSearch(e), 1000),
-            id: 'searchInput',
-            type: 'text',
-            className:
-              'px-2 py-[.5em] rounded-full border-none pl-5 focus:outline-none focus:border-none bg-[#7c7c7c2b] text-md  w-[calc(100%-50px)]',
-            placeholder: 'Search',
+            element: 'div',
+            className: 'w-[calc(100%-50px)] relative',
+            child: [
+              El({
+                element: 'input',
+                onkeyup: debounce(e => handleSearch(e), 1000),
+                id: 'searchInput',
+                type: 'text',
+                className:
+                  'px-2 py-[.5em] rounded-full border-none pl-5 focus:outline-none focus:border-none bg-[#7c7c7c2b] text-md  w-full',
+                placeholder: 'Search',
+              }),
+              El({
+                element: 'div',
+                className: 'hidden mt-1 absolute w-full overflow-auto text-sm',
+                id: 'history',
+                child: [
+                  El({
+                    element: 'ul',
+                    id: 'inputUL',
+                    className: 'w-full overflow-auto text-sm',
+                    child: [],
+                  }),
+                  El({
+                    element: 'div',
+                    id: 'removeHistory',
+                    className:
+                      'w-full bg-[#15141C] bg-opacity-100 p-1 pl-6 hover:bg-gray-800 cursor-pointer text-red-500 font-bold',
+                    child: 'Remove all',
+                  }),
+                ],
+              }),
+            ],
           }),
+
           El({
             element: 'button',
             id: 'search',

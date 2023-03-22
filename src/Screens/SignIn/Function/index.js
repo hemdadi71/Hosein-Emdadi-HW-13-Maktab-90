@@ -1,7 +1,7 @@
 import { API } from '@/API/Function'
 import { ValidationText } from '@/Components'
 import { WetherPage } from '@/Screens/Wether'
-import { displayWeather, getApi } from '@/Screens/Wether/Function'
+import { displayWeather, getApi, InputFocusOut } from '@/Screens/Wether/Function'
 
 export const handleSignIn = e => {
   e.preventDefault()
@@ -18,6 +18,8 @@ export const handleSignIn = e => {
         main.appendChild(WetherPage())
         history.pushState(null, null, '/weather')
         getApi('tehran').then(response => displayWeather(response))
+        document.body.style.backgroundImage = `url('../../src/Assets/images/timothy-lake-oregon-2560x1080-9773.jpg')`
+        InputFocusOut()
       }
       if (e.target.email.value) {
         if (item.email !== e.target.email.value) {
