@@ -62,7 +62,7 @@ export const SignUP = () => {
             element: 'input',
             type: 'submit',
             className:
-              'bg-gray-600 py-2 rounded-md text-gray-100 font-bold hover:bg-gray-400 hover:text-gray-800 mt-3 w-[20%] cursor-pointer',
+              'bg-[#635985] py-2 rounded-md text-gray-100 font-bold hover:bg-gray-400 hover:text-gray-800 mt-3 w-[20%] cursor-pointer mb-2',
             value: 'Signup',
           }),
         ],

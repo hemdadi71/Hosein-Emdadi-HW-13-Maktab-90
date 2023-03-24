@@ -2,7 +2,6 @@ import El from '@/Library'
 import { handleBack, handleSearch } from '@/Screens/Wether/Function'
 import { svg } from '@/Svg'
 import { debounce } from 'lodash'
-// import { Li } from './Li-Input'
 
 export const Card = () => {
   return El({
@@ -117,7 +116,7 @@ export const Card = () => {
               El({
                 element: 'p',
                 className: '',
-                child: 'Back to login',
+                child: 'Sign out',
               }),
             ],
           }),

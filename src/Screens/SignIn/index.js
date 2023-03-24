@@ -11,7 +11,7 @@ export const SignIn = () => {
         element: 'form',
         id: 'loginForm',
         onsubmit: handleSignIn,
-        className: 'flex flex-col gap-10 mt-8',
+        className: 'flex flex-col gap-8 mt-8',
         child: [
           El({
             element: 'div',
@@ -42,8 +42,8 @@ export const SignIn = () => {
             element: 'input',
             type: 'submit',
             className:
-              'bg-gray-600 py-2 rounded-md text-gray-100 font-bold hover:bg-gray-400 hover:text-gray-800 mt-5 w-[20%] cursor-pointer',
-            value: 'LogIn',
+              'bg-[#635985] py-2 rounded-md text-gray-100 font-bold hover:bg-gray-400 hover:text-gray-800 w-[20%] cursor-pointer mb-2',
+            value: 'Login',
           }),
         ],
       }),

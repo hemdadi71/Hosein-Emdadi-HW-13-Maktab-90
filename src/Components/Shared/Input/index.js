@@ -11,25 +11,18 @@ const Input = ({ placeholder, eyeClassName, type, name, onkeyup }) => {
         element: 'input',
         id: 'floating_filled',
         className:
-          'block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-md text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-600 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer',
+          'rounded-full px-2 pl-5 py-[.5rem] bg-[#7c7c7c2b] w-full border-none outline-none text-white text-md',
         type: type,
-        placeholder: ' ',
+        placeholder: placeholder,
         name: name,
         onkeyup,
       }),
       El({
         element: 'div',
         id: 'svg',
-        className: `${eyeClassName} absolute right-3 top-7`,
-        innerHTML: svg.eye,
-        onmousedown: handleShowPassword,
-      }),
-      El({
-        element: 'label',
-        for: 'floating_filled',
-        className:
-          'absolute text-md text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 font-bold',
-        child: placeholder,
+        className: `${eyeClassName} absolute right-3 top-[.65rem]`,
+        innerHTML: svg.hidden,
+        onclick: handleShowPassword,
       }),
     ],
   })

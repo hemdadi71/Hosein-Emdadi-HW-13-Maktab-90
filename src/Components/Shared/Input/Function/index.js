@@ -1,10 +1,15 @@
+import { svg } from '@/Svg'
+
 export const handleShowPassword = e => {
   const paswordInput = e.target.closest('#svg').previousElementSibling
+  const icon = document.getElementById('svg')
   if (paswordInput.type === 'password') {
-    e.currentTarget.childNodes[0].setAttribute('fill', 'black')
     paswordInput.type = 'text'
+    icon.innerHTML = ''
+
+    paswordInput.nextElementSibling.innerHTML = svg.show
   } else {
-    e.currentTarget.childNodes[0].setAttribute('fill', '#858585')
     paswordInput.type = 'password'
+    paswordInput.nextElementSibling.innerHTML = svg.hidden
   }
 }

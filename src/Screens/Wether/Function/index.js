@@ -1,6 +1,7 @@
 import { Li } from '@/Components/card/Li-Input'
 import El from '@/Library'
 import { HomePage } from '@/Screens/Home'
+import Cookies from 'js-cookie'
 let data = []
 let result
 
@@ -37,7 +38,7 @@ export function handleSearch(e) {
   if (e.target.value) {
     getApi(e.target.value).then(response => {
       displayWeather(response)
-      console.log(response.main.temp)
+      console.log(response)
       history.classList.add('hidden')
     })
     data.push(e.target.value)
@@ -56,6 +57,8 @@ export function handleBack() {
   main.innerHTML = ''
   main.appendChild(HomePage())
   document.body.style.backgroundImage = `url('../../src/Assets/images/surreal-storm-boat-clouds-thunderstorm-ocean-5k-8k-2560x1080-9018.jpg')`
+  Cookies.remove('token')
+  location.reload()
 }
 export function InputFocusIn() {
   const inputUL = document.getElementById('inputUL')

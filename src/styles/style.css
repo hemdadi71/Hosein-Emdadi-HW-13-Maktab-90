@@ -5,9 +5,9 @@
   width: 25px;
   height: 25px;
   left: -25px;
-  bottom: 0;
+  bottom: 0.1rem;
   border-radius: 0 0 10px 0;
-  box-shadow: 1px 10px 0 0 #fff;
+  box-shadow: 1px 10px 0 0 rgb(26, 26, 26);
 }
 .indicator::before {
   content: '';
@@ -16,12 +16,22 @@
   width: 25px;
   height: 25px;
   right: -25px;
-  bottom: 0;
+  bottom: 0.1rem;
   border-radius: 0 0 0 10px;
-  box-shadow: -1px 10px 0 0 #fff;
+  box-shadow: -1px 10px 0 0 rgb(26, 26, 26);
 }
 .indicator {
   transition: 0.5s;
+  background: rgb(26, 26, 26);
+  background: linear-gradient(0deg, rgb(27, 27, 27) 0%, rgba(0, 0, 0, 0) 100%);
+  box-shadow: 0 0 10px #ccc;
+  clip-path: inset(-10px -10px 1px -10px);
+  top: 0.1rem;
+}
+.line {
+  top: 4.4rem;
+  box-shadow: 0 0 10px #ccc;
+  clip-path: inset(-10px 0 1px 0);
 }
 
 #nav ul li:nth-child(1).active ~ .indicator {
@@ -34,7 +44,8 @@
   transform: translateX(calc(100px * 2));
 }
 #nav ul li.active {
-  color: black;
+  color: #ffffff;
+  text-shadow: 0 0 15px;
 }
 #search {
   transition: 0.2s ease-in-out;
@@ -46,4 +57,17 @@
 #removeHistory {
   border-radius: 0 0 15px 15px;
   padding-bottom: 10px;
+}
+input[type='submit'] {
+  transition: 0.2s ease-in-out;
+  box-shadow: 0 0 5px #ccc;
+}
+input[type='submit']:hover {
+  box-shadow: 0 0 10px #fff;
+}
+#floating_filled {
+  box-shadow: 0 0 5px #ccc;
+}
+#floating_filled:focus {
+  box-shadow: 0 0 10px #fff;
 }

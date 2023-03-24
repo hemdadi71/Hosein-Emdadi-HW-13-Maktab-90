@@ -5,7 +5,7 @@ export const Navbar = () => {
   return El({
     element: 'nav',
     id: 'nav',
-    className: 'bg-gray-600 pt-5 rounded-t-2xl text-gray-100 relative',
+    className: 'pt-5 rounded-t-2xl text-gray-100 relative',
     child: [
       El({
         element: 'div',
@@ -30,22 +30,27 @@ export const Navbar = () => {
         child: [
           El({
             element: 'li',
-            className: 'w-[100px] text-center z-10 cursor-pointer active',
+            className: 'w-[100px] text-gray-400 text-center z-20 cursor-pointer active',
             child: 'SignIn',
             onclick: SignInPage,
           }),
           El({
             element: 'li',
-            className: 'w-[100px] text-center z-10 cursor-pointer',
+            className: 'w-[100px] text-gray-400 text-center z-20 cursor-pointer',
             child: 'SignUp',
             onclick: SignUpPage,
           }),
           El({
             element: 'div',
             className:
-              'absolute bg-gray-50 w-[100px] h-[50px] rounded-t-xl left-0 indicator',
+              'absolute z-10 w-[100px] h-[50px] rounded-t-xl left-0 indicator',
           }),
         ],
+      }),
+      El({
+        element: 'div',
+        className:
+          'absolute w-full h-[1rem] line',
       }),
     ],
   })

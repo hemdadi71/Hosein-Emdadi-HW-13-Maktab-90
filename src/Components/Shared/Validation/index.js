@@ -1,10 +1,10 @@
 import El from '@/Library'
-export const email = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,4}$/
-export const password = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+export const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,4}$/
+export const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 export const ValidationText = ({ text, className, id }) => {
   return El({
     element: 'p',
-    className: className,
+    className: `${className}`,
     child: text,
     id,
   })
@@ -13,7 +13,7 @@ export const handleValidationEmail = e => {
   const emailValidation = document.getElementById('emailValidation')
   const emptyEmail = document.getElementById('emptyEmail')
   if (e.target.value) {
-    if (!email.test(e.target.value)) {
+    if (!emailPattern.test(e.target.value)) {
       if (emailValidation) return null
       e.target.parentElement.append(
         ValidationText({
@@ -35,7 +35,7 @@ export const handleValidationPassword = e => {
   const passwordValidation = document.getElementById('passwordValidation')
   const emptyPassword = document.getElementById('emptyPassword')
   if (e.target.value) {
-    if (!password.test(e.target.value)) {
+    if (!passwordPattern.test(e.target.value)) {
       if (passwordValidation) return null
       e.target.parentElement.append(
         ValidationText({
@@ -75,5 +75,4 @@ export const handleValidationRepassword = e => {
   } else {
     passwordReenterValidation.remove()
   }
-  // console.log(e.target.value)
 }

@@ -1,13 +1,14 @@
 import { API } from '@/API/Function'
 import {
+  emailPattern,
   handleValidationEmail,
   handleValidationPassword,
+  passwordPattern,
   ValidationText,
 } from '@/Components'
 
 export const handleSetData = e => {
   e.preventDefault()
-
   const email = e.target.email
   const password = e.target.password
   const item = {
@@ -21,8 +22,8 @@ export const handleSetData = e => {
   const emptyEmail = document.getElementById('emptyEmail')
   const emptyPassword = document.getElementById('emptyPassword')
   const emptyReenterPass = document.getElementById('emptyReenterPass')
+  const emailValid = document.getElementById('emailValid')
   if (!signupEmail.childNodes[0].childNodes[0].value) {
-    e.currentTarget.dataset.validation = '0'
     if (emptyEmail) return
     signupEmail.append(
       ValidationText({
@@ -32,15 +33,57 @@ export const handleSetData = e => {
       })
     )
   } else {
-    e.currentTarget.dataset.validation = '1'
     if (emptyEmail) {
       emptyEmail.remove()
     }
   }
-  // .............................
-  if (!signupPassword.childNodes[0].childNodes[0].value) {
-    e.currentTarget.dataset.validation = '0'
+  //.................................................................
+  if (
+    signupEmail.childNodes[0].childNodes[0].value &&
+    signupPassword.childNodes[0].childNodes[0].value &&
+    reEnterPass.childNodes[0].childNodes[0].value
+  ) {
+    API.GetData(API.BaseUrl, API.Endpoint).then(response => {
+      const sameEmail = response.find(
+        item => item.email === signupEmail.childNodes[0].childNodes[0].value
+      )
 
+      if (sameEmail) {
+        if (sameEmail.email === signupEmail.childNodes[0].childNodes[0].value) {
+          e.target.dataset.validation = '0'
+          if (emailValid) return
+          signupEmail.append(
+            ValidationText({
+              text: 'There is an existing account with this email address',
+              className: 'text-red-500 text-left ml-3',
+              id: 'emailValid',
+            })
+          )
+        }
+      } else {
+        if (emailValid) {
+          emailValid.remove()
+        }
+        if (
+          emailPattern.test(signupEmail.childNodes[0].childNodes[0].value) &&
+          passwordPattern.test(
+            signupPassword.childNodes[0].childNodes[0].value
+          ) &&
+          reEnterPass.childNodes[0].childNodes[0].value ===
+            signupPassword.childNodes[0].childNodes[0].value
+        ) {
+          API.SetData(API.BaseUrl, API.Endpoint, item).then(response =>
+            console.log(response)
+          )
+          e.target.reset()
+        } else {
+          return
+        }
+      }
+    })
+  }
+  // ..............................................................
+  if (!signupPassword.childNodes[0].childNodes[0].value) {
     if (emptyPassword) return
     signupPassword.append(
       ValidationText({
@@ -50,15 +93,12 @@ export const handleSetData = e => {
       })
     )
   } else {
-    e.currentTarget.dataset.validation = '1'
     if (emptyPassword) {
       emptyPassword.remove()
     }
   }
   // ............................................
   if (!reEnterPass.childNodes[0].childNodes[0].value) {
-    e.currentTarget.dataset.validation = '0'
-
     if (emptyReenterPass) return
     reEnterPass.append(
       ValidationText({
@@ -68,16 +108,8 @@ export const handleSetData = e => {
       })
     )
   } else {
-    e.currentTarget.dataset.validation = '1'
     if (emptyReenterPass) {
       emptyReenterPass.remove()
     }
-  }
-  // .......................................................
-  if (e.currentTarget.dataset.validation === '1') {
-    API.SetData(API.BaseUrl, API.Endpoint, item).then(response =>
-      console.log(response)
-    )
-    e.currentTarget.reset()
   }
 }

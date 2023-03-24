@@ -2,6 +2,7 @@
 
 import El from '@/Library'
 import { SignIn, SignUP } from '@/Screens'
+import { WetherPage } from '@/Screens/Wether'
 
 export const Routes = () => {
   const article =
