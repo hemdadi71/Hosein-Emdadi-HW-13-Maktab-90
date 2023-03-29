@@ -6,6 +6,8 @@ import {
   passwordPattern,
   ValidationText,
 } from '@/Components'
+import { SuccessBox } from '@/Components/Success'
+import { AddSuccess, RemoveSuccess } from '@/Components/Success/Function'
 
 export const handleSetData = e => {
   e.preventDefault()
@@ -72,9 +74,12 @@ export const handleSetData = e => {
           reEnterPass.childNodes[0].childNodes[0].value ===
             signupPassword.childNodes[0].childNodes[0].value
         ) {
-          API.SetData(API.BaseUrl, API.Endpoint, item).then(response =>
-            console.log(response)
-          )
+          API.SetData(API.BaseUrl, API.Endpoint, item).then(response => {
+            const main = document.getElementById('main')
+            main.append(SuccessBox('SignUp'))
+            AddSuccess()
+            setTimeout(RemoveSuccess, 4000)
+          })
           e.target.reset()
         } else {
           return

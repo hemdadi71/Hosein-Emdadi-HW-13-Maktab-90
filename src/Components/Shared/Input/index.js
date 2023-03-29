@@ -9,9 +9,9 @@ const Input = ({ placeholder, eyeClassName, type, name, onkeyup }) => {
     child: [
       El({
         element: 'input',
-        id: 'floating_filled',
+        id:'HomeInput',
         className:
-          'rounded-full px-2 pl-5 py-[.5rem] bg-[#7c7c7c2b] w-full border-none outline-none text-white text-md',
+          'rounded-full px-2 pl-5 py-[.5rem] bg-[#7c7c7c2b] w-full border-none outline-none text-white text-md HomeInput',
         type: type,
         placeholder: placeholder,
         name: name,

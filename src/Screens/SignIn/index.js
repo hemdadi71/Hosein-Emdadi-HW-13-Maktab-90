@@ -5,7 +5,7 @@ import { handleSignIn } from './Function'
 export const SignIn = () => {
   return El({
     element: 'div',
-    className: 'w-[80%] mb-4 ml-10',
+    className: 'w-[80%] mb-4 md:ml-10 sm:ml-6',
     child: [
       El({
         element: 'form',
@@ -42,7 +42,7 @@ export const SignIn = () => {
             element: 'input',
             type: 'submit',
             className:
-              'bg-[#635985] py-2 rounded-md text-gray-100 font-bold hover:bg-gray-400 hover:text-gray-800 w-[20%] cursor-pointer mb-2',
+              'bg-[#635985] py-2 rounded-md text-gray-100 font-bold hover:bg-gray-400 hover:text-gray-800 md:w-[20%] cursor-pointer sm:w-[30%]',
             value: 'Login',
           }),
         ],

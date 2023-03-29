@@ -7,5 +7,9 @@ module.exports = {
         trBlack: '#000000d0',
       },
     },
+    screens: {
+      sm: '280px',
+      md: '445px',
+    },
   },
 }

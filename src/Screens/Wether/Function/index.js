@@ -1,4 +1,7 @@
 import { Li } from '@/Components/card/Li-Input'
+import { AddError, RemoveError } from '@/Components/Error/Function'
+import { LoadingBox } from '@/Components/Loading'
+import { AddLoading, RemoveLoading } from '@/Components/Loading/Function'
 import El from '@/Library'
 import { HomePage } from '@/Screens/Home'
 import Cookies from 'js-cookie'
@@ -32,30 +35,36 @@ export function displayWeather(data) {
   windDisplay.innerText = `Wind speed ${speed} km/h`
   // document.body.style.backgroundImage = `url('https://source.unsplash.com/1920x1080/?${name}')`
 }
-// const access_key = `OflEDCAHAePzXEJjIyxZPtdcIDsFWXUxPPEI2IjhTYc`
 export function handleSearch(e) {
   const history = document.getElementById('history')
   if (e.target.value) {
-    getApi(e.target.value).then(response => {
-      displayWeather(response)
-      console.log(response)
-      history.classList.add('hidden')
-    })
+    AddLoading()
+    RemoveError()
+    getApi(e.target.value)
+      .then(response => {
+        displayWeather(response)
+        console.log(response)
+        history.classList.add('hidden')
+        RemoveLoading()
+      })
+      .catch(err => {
+        RemoveLoading()
+        AddError()
+      })
     data.push(e.target.value)
     result = [...new Set(data.slice(-6))]
     localStorage.setItem('item', JSON.stringify(result))
   } else {
     history.classList.add('hidden')
+    RemoveLoading()
+    RemoveError()
   }
-  // fetch(`https://api.unsplash.com/search/photos?query=london&client_id=${access_key}`)
-  //   .then(response => response.json())
-  //   .then(data => console.log(data))
 }
 export function handleBack() {
   const main = document.getElementById('main')
   history.pushState(null, null, '/login')
   main.innerHTML = ''
-  main.appendChild(HomePage())
+  main.append(HomePage(), LoadingBox())
   document.body.style.backgroundImage = `url('../../src/Assets/images/surreal-storm-boat-clouds-thunderstorm-ocean-5k-8k-2560x1080-9018.jpg')`
   Cookies.remove('token')
   location.reload()

@@ -2,13 +2,15 @@ import El from '@/Library'
 import { handleBack, handleSearch } from '@/Screens/Wether/Function'
 import { svg } from '@/Svg'
 import { debounce } from 'lodash'
+import { Display } from '../Light&Dark'
+import { WeahterDisplay } from './Function'
 
 export const Card = () => {
   return El({
     element: 'div',
     id: 'card',
     className:
-      'card bg-trBlack text-white p-7 rounded-2xl w-full max-w-[420px] m-2 text-[120%] flex flex-col gap-5',
+      'card bg-trBlack text-white p-7 rounded-2xl w-full max-w-[420px] m-3 text-[120%] flex flex-col gap-5',
     child: [
       El({
         element: 'div',
@@ -67,7 +69,7 @@ export const Card = () => {
             element: 'h2',
             id: 'city',
             className: 'text-3xl font-bold mb-5',
-            child: 'Weather in Denver',
+            child: 'Weather in Tehran',
           }),
           El({
             element: 'h1',
@@ -105,10 +107,11 @@ export const Card = () => {
           }),
           El({
             element: 'div',
-            className: 'flex items-cetner gap-5 mt-10',
+            className: 'flex items-cetner gap-5 mt-10 relative',
             child: [
               El({
                 element: 'div',
+                id: 'exit',
                 className: 'cursor-pointer',
                 innerHTML: svg.exit,
                 onclick: handleBack,
@@ -118,8 +121,14 @@ export const Card = () => {
                 className: '',
                 child: 'Sign out',
               }),
+              El({
+                element: 'div',
+                id:'displayIcon',
+                onclick: WeahterDisplay,
+                className: 'absolute right-0 bottom-0 bg-white rounded-full p-1 cursor-pointer',
+              }),
             ],
-          }),
+          })
         ],
       }),
     ],

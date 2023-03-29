@@ -1,4 +1,4 @@
-.indicator::after {
+.indicator-Dark::after {
   content: '';
   position: absolute;
   background-color: transparent;
@@ -9,7 +9,7 @@
   border-radius: 0 0 10px 0;
   box-shadow: 1px 10px 0 0 rgb(26, 26, 26);
 }
-.indicator::before {
+.indicator-Dark::before {
   content: '';
   position: absolute;
   background-color: transparent;
@@ -20,17 +20,55 @@
   border-radius: 0 0 0 10px;
   box-shadow: -1px 10px 0 0 rgb(26, 26, 26);
 }
+.indicator-Light::after {
+  content: '';
+  position: absolute;
+  background-color: transparent;
+  width: 25px;
+  height: 25px;
+  left: -25px;
+  bottom: 0.1rem;
+  border-radius: 0 0 10px 0;
+  box-shadow: 1px 10px 0 0 rgb(211, 211, 211);
+}
+.indicator-Light::before {
+  content: '';
+  position: absolute;
+  background-color: transparent;
+  width: 25px;
+  height: 25px;
+  right: -25px;
+  bottom: 0.1rem;
+  border-radius: 0 0 0 10px;
+  box-shadow: -1px 10px 0 0 rgb(211, 211, 211);
+}
 .indicator {
   transition: 0.5s;
-  background: rgb(26, 26, 26);
-  background: linear-gradient(0deg, rgb(27, 27, 27) 0%, rgba(0, 0, 0, 0) 100%);
-  box-shadow: 0 0 10px #ccc;
   clip-path: inset(-10px -10px 1px -10px);
   top: 0.1rem;
 }
-.line {
+.indicator-Dark {
+  background: rgb(26, 26, 26);
+  background: linear-gradient(0deg, rgb(27, 27, 27) 0%, rgba(0, 0, 0, 0) 100%);
+  box-shadow: 0 0 10px #ccc;
+}
+.indicator-Light {
+  background: rgb(211, 211, 211);
+  background: linear-gradient(
+    0deg,
+    rgb(211, 211, 211) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  box-shadow: 0 0 10px #2e2e2e;
+}
+.line-dark {
   top: 4.4rem;
   box-shadow: 0 0 10px #ccc;
+  clip-path: inset(-10px 0 1px 0);
+}
+.line-light {
+  top: 4.4rem;
+  box-shadow: 0 0 10px #2e2e2e;
   clip-path: inset(-10px 0 1px 0);
 }
 
@@ -43,10 +81,25 @@
 #nav ul li:nth-child(3).active ~ .indicator {
   transform: translateX(calc(100px * 2));
 }
+#nav ul li:nth-child(1).lightActive ~ .indicator {
+  transform: translateX(calc(100px * 0));
+}
+#nav ul li:nth-child(2).lightActive ~ .indicator {
+  transform: translateX(calc(100px * 1));
+}
+#nav ul li:nth-child(3).lightActive ~ .indicator {
+  transform: translateX(calc(100px * 2));
+}
+
+#nav ul li.lightActive {
+  color: #030303;
+  text-shadow: 0 0 15px #686868;
+}
 #nav ul li.active {
   color: #ffffff;
   text-shadow: 0 0 15px;
 }
+
 #search {
   transition: 0.2s ease-in-out;
 }
@@ -65,9 +118,13 @@ input[type='submit'] {
 input[type='submit']:hover {
   box-shadow: 0 0 10px #fff;
 }
-#floating_filled {
+.HomeInput {
   box-shadow: 0 0 5px #ccc;
 }
-#floating_filled:focus {
+.lightInput::placeholder {
+  color: #444444;
+  font-weight: bold;
+}
+#HomeInput:focus {
   box-shadow: 0 0 10px #fff;
 }

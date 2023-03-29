@@ -1,12 +1,13 @@
-import { Article, Header } from "@/Layout"
-import El from "@/Library"
+import { Display } from '@/Components/Light&Dark'
+import { Article, Header } from '@/Layout'
+import El from '@/Library'
 
 export const HomePage = () => {
   return El({
     element: 'div',
-    id:'home',
+    id: 'home',
     className:
-      'fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[500px] bg-[#000000d0] rounded-2xl z-10',
-    child: [Header(), Article()],
+      'w-full max-w-[450px] rounded-2xl m-3 relative',
+    child: [Header(), Article(),Display()],
   })
 }

@@ -17,7 +17,7 @@ export const SignUP = () => {
         id: 'signupForm',
         restAttrs: { 'data-validation': 0 },
         onsubmit: handleSetData,
-        className: 'flex flex-col gap-5 mt-8',
+        className: 'flex flex-col gap-7 mt-8',
         child: [
           El({
             element: 'div',
@@ -62,7 +62,7 @@ export const SignUP = () => {
             element: 'input',
             type: 'submit',
             className:
-              'bg-[#635985] py-2 rounded-md text-gray-100 font-bold hover:bg-gray-400 hover:text-gray-800 mt-3 w-[20%] cursor-pointer mb-2',
+              'bg-[#635985] py-2 rounded-md text-gray-100 font-bold hover:bg-gray-400 hover:text-gray-800 mt-3 md:w-[20%] sm:w-[30%] cursor-pointer mb-2',
             value: 'Signup',
           }),
         ],

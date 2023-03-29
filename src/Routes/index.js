@@ -1,8 +1,8 @@
 // import El from '@/Library'
 
+
 import El from '@/Library'
 import { SignIn, SignUP } from '@/Screens'
-import { WetherPage } from '@/Screens/Wether'
 
 export const Routes = () => {
   const article =
@@ -10,6 +10,7 @@ export const Routes = () => {
     El({
       element: 'div',
     })
+
   article.innerHTML = ''
   switch (location.pathname) {
     case '/signin':
